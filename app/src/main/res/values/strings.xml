@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Learn Driver</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="produce">Đã uống rượu bia, không lái xe</string>
+    <string name="tv_gplx">Ôn thi GPLX B1-B2</string>
+    <string name="tv_content">Đã uống rượu bia, không lái xe</string>
+    <string name="tv_all_question">TẤT CẢ CÂU HỎI</string>
+    <string name="tv_save_question">CÂU BẠN ĐÁNH DẤU</string>
+    <string name="tv_num">250/600</string>
+    <string name="tv_num_save_question">0/1</string>
+    <string name="tv_study">ÔN THI THEO CHỦ ĐỀ</string>
+    <string name="tv_extensition">Tiện ích</string>
+    <string name="tv_notice_broad">Biển báo giao thông</string>
+    <string name="tv_search_notice_broad">Tra cứu biển báo giao thông</string>
+    <string name="tv_law_traffic">Luật giao thông</string>
+    <string name="tv_search_law_traffic">Tra cứu luật giao thông và xử phạt</string>
+    <string name="tv_rate_app">Đánh giá ứng dụng</string>
+    <string name="tv_report_error">Báo lỗi, góp ý</string>
+    <string name="tv_support">Hỗ trợ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_total_question">600 câu</string>
+    <string name="tv_total_save_question">1 câu</string>
+    <string name="tv_character">/</string>
+    <string name="tv_current_question">1</string>
+    <string name="tv_question_total">600</string>
+    <string name="tv_question">Câu</string>
+    <string name="tv_wrong_question">Câu sai</string>
+    <string name="tv_not_study">Chưa học</string>
+    <string name="tv_all">Tất cả</string>
+    <string name="tv_answer1">Phần mặt đường và lề đường</string>
+    <string name="tv_current_question_title">01</string>
+    <string name="tv_question_title">Phần đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?</string>
+    <string name="tv_answer2">Phần đường xe chạy</string>
+    <string name="tv_answer3">Phần đường xe cơ giới</string>
+    <string name="tv_answer4">Cả 3 đáp án trên</string>
+    <string name="tv_result_true_or_false">ĐÚNG</string>
+    <string name="tv_true">ĐÚNG</string>
+    <string name="tv_comment">Làn đường có bề đủ rộng cho xe chạy an toàn</string>
+    <string name="tv_answer_result">Đáp án đúng: Số 2</string>
+</resources>

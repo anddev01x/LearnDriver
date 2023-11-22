@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background_purple"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.ExtensionFragment">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_137dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="3"
+            android:fontFamily="@font/raleway_bold"
+            android:padding="15dp"
+            android:text="@string/tv_extensition"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_settting_background" />
+
+    </TableRow>
+
+
+    <FrameLayout
+        android:id="@+id/layout_notice_broad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_view_top"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_notice" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/tv_notice_broad"
+            android:textColor="@color/black_200" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="27dp"
+            android:text="@string/tv_search_notice_broad"
+            android:textStyle="italic" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="55dp"
+            android:background="@color/gray_200" />
+
+        <ImageView
+            android:id="@+id/ic_next_notice"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="315dp"
+            android:layout_marginTop="10dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_next" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_law_traffic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_view_bottom"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_law" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/tv_law_traffic"
+            android:textColor="@color/black_200" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/tv_search_law_traffic"
+            android:textStyle="italic" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="53dp" />
+
+        <ImageView
+            android:id="@+id/ic_next_law"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="315dp"
+            android:layout_marginTop="10dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_next" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_rate_star"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_view_top"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center|start"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_rate" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="40dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/tv_rate_app"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/gray_200" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tv_report_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center|start"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_error" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="40dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/tv_report_error"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/gray_200" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_view_bottom"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center|start"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_support" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="40dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/tv_support"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="47dp" />
+    </FrameLayout>
+</LinearLayout>

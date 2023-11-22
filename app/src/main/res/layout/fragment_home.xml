@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.HomeFragment">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="250dp"
+            android:layout_height="140dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            android:src="@drawable/gif_car" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="250dp"
+            android:layout_height="140dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            android:src="@drawable/gif_car" />
+    </TableRow>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/tv_gplx"
+        android:textColor="@color/purple_200"
+        android:textSize="23sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/tv_content"
+        android:textSize="19sp"
+        android:textStyle="italic" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        tools:ignore="ScrollViewCount">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="ScrollViewSize">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_table_row"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:weightSum="4">
+
+                <ImageView
+                    android:id="@+id/ic_exam_topic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_exam_topic" />
+
+                <ImageView
+                    android:id="@+id/ic_idea"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_idea" />
+
+                <ImageView
+                    android:id="@+id/ic_wrong_question"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_wrong" />
+
+                <ImageView
+                    android:id="@+id/ic_filter_question"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_filter_question" />
+
+            </TableRow>
+
+            <FrameLayout
+                android:id="@+id/layout_all_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_table_row"
+                android:padding="15dp"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_all_question"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/tv_all_question"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/tv_total_question"
+                    android:textSize="13sp" />
+
+
+                <ProgressBar
+                    android:id="@+id/prgBar_all_question"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="205dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_table_row"
+                    android:max="100"
+                    android:progress="30"
+                    android:progressDrawable="@drawable/custom_load_progressbar"
+                    android:progressTint="@color/purple_200" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/tv_num"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_editor_absoluteY="35dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_save_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_table_row"
+                android:padding="15dp"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_save"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/tv_save_question"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/tv_total_save_question"
+                    android:textSize="13sp" />
+
+
+                <ProgressBar
+                    android:id="@+id/prgBar_save_question"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="205dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_table_row"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_load_progressbar"
+                    android:progressTint="@color/purple_200" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/tv_num_save_question"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_editor_absoluteY="35dp" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/tv_study"
+                android:textSize="15sp"
+                tools:ignore="RtlSymmetry" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="620dp"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/item_topic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

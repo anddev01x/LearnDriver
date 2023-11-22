@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="@color/gray_300" /> <!-- Màu cho phần chưa load -->
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/purple_200" /> <!-- Màu cho phần đã load -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>
