@@ -1,7 +1,6 @@
 package com.example.learndriver.ui.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -12,7 +11,6 @@ import com.example.learndriver.adapter.ViewPageAdapter
 import com.example.learndriver.databinding.ActivityTopicQuestionBinding
 import com.example.learndriver.model.Topic
 import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class TopicQuestionActivity : BaseAct<ActivityTopicQuestionBinding>() {
