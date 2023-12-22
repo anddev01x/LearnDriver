@@ -31,7 +31,8 @@ class TopicQuestionActivity : BaseAct<ActivityTopicQuestionBinding>() {
     private fun displayQuestion(idStart: String, idEnd: String) {
         lifecycleScope.launch {
             try {
-                val result = allQuestionViewModel.getPartQuestion(idStart, idEnd)
+                val result = allQuestionViewModel.getQuestionBetweenIds(idStart, idEnd)
+                Log.d("YourTag", "Questions: ${result.size}")
                 result.let {
                     Log.e("TAG", "displayQuestion: ")
                     val adapter = ViewPageAdapter(supportFragmentManager, lifecycle, it)
@@ -60,39 +61,39 @@ class TopicQuestionActivity : BaseAct<ActivityTopicQuestionBinding>() {
             }
         }
     }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun displaySpecialQuestion() {
-        lifecycleScope.launch {
-            try {
-                val result = allQuestionViewModel.getSpecialQuestion()
-                result.let {
-                    val adapter = ViewPageAdapter(supportFragmentManager, lifecycle, it)
-                    binding.viewPageTopicQuestion.adapter = adapter
-                    binding.viewPageTopicQuestion.offscreenPageLimit = 15
-                    binding.tvTotalQuestion.text = result.size.toString()
-                    binding.viewPageTopicQuestion.registerOnPageChangeCallback(object :
-                        ViewPager2.OnPageChangeCallback() {
-                        @SuppressLint("SetTextI18n")
-                        override fun onPageSelected(position: Int) {
-                            binding.tvCurrentQuestion.text = (position + 1).toString()
-                            Log.i("TAG", "Position page:  $position")
-                            if (position == 0) {
-                                binding.icBackQuestion.visibility = View.GONE
-                                binding.viewSpace.visibility = View.VISIBLE
-                            } else {
-                                binding.icBackQuestion.visibility = View.VISIBLE
-                                binding.viewSpace.visibility = View.GONE
-                            }
-                        }
-
-                    })
-                }
-            } catch (e: Exception) {
-                Log.e("TAG", "Error: ${e.message}")
-            }
-        }
-    }
+//
+//    @SuppressLint("NotifyDataSetChanged")
+//    private fun displaySpecialQuestion() {
+//        lifecycleScope.launch {
+//            try {
+//                val result = allQuestionViewModel.getSpecialQuestion()
+//                result.let {
+//                    val adapter = ViewPageAdapter(supportFragmentManager, lifecycle, it)
+//                    binding.viewPageTopicQuestion.adapter = adapter
+//                    binding.viewPageTopicQuestion.offscreenPageLimit = 15
+//                    binding.tvTotalQuestion.text = result.size.toString()
+//                    binding.viewPageTopicQuestion.registerOnPageChangeCallback(object :
+//                        ViewPager2.OnPageChangeCallback() {
+//                        @SuppressLint("SetTextI18n")
+//                        override fun onPageSelected(position: Int) {
+//                            binding.tvCurrentQuestion.text = (position + 1).toString()
+//                            Log.i("TAG", "Position page:  $position")
+//                            if (position == 0) {
+//                                binding.icBackQuestion.visibility = View.GONE
+//                                binding.viewSpace.visibility = View.VISIBLE
+//                            } else {
+//                                binding.icBackQuestion.visibility = View.VISIBLE
+//                                binding.viewSpace.visibility = View.GONE
+//                            }
+//                        }
+//
+//                    })
+//                }
+//            } catch (e: Exception) {
+//                Log.e("TAG", "Error: ${e.message}")
+//            }
+//        }
+//    }
 
     private fun getData() {
         val topic = intent.getSerializableExtra("topic_key") as Topic
@@ -100,7 +101,7 @@ class TopicQuestionActivity : BaseAct<ActivityTopicQuestionBinding>() {
         when (topic.topic) {
             "CÂU ĐIỂM LIỆT" -> {
                 binding.tvTopic.text = topic.topic
-                displaySpecialQuestion()
+//                displaySpecialQuestion()
             }
 
             "KHÁI NIỆM VÀ QUY TẮC" -> {

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".ui.activity.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,12 +17,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.ExamTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.QuestionActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activity.PracticeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TopicQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.MainActivity">
+            android:parentActivityName=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

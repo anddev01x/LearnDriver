@@ -3,7 +3,7 @@ package com.example.learndriver.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Option")
+@Entity
 data class Option(
     @PrimaryKey val optionId: Long,
     val a: String,

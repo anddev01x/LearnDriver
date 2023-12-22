@@ -1,30 +1,37 @@
 package com.example.learndriver.ui.viewmodel
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.learndriver.api.Api
+import com.example.learndriver.data_local.database.AppDatabase
 import com.example.learndriver.data_local.database.DatabaseSingleton
 import com.example.learndriver.model.Question
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class AllQuestionViewModel : ViewModel() {
-    private lateinit var listQuestion: MutableList<Question>
-    private lateinit var listAllQuestion: List<Question>
-    private lateinit var listNotStudyQuestion: MutableList<Question>
+class AllQuestionViewModel(application: Application) : AndroidViewModel(application) {
+    private var listQuestion: MutableList<Question> = mutableListOf()
+    private var listNotStudyQuestions: List<Question> = listOf()
+    private var listAllQuestion: List<Question> = listOf()
+    private var listWrongQuestion: List<Question> = listOf()
+    val answersMap: HashMap<String, String> = hashMapOf()
 
     @SuppressLint("StaticFieldLeak")
-    private val context: Context? = null
-    private val appDatabase = context?.let { DatabaseSingleton.getDatabase(it) }
-
     private val mListAllQuestionMutableLiveData: MutableLiveData<List<Question>?> =
         MutableLiveData()
 
     private val mListNotStudyQuestionLiveData: MutableLiveData<List<Question>?> =
+        MutableLiveData()
+
+    private val mListWrongQuestionLiveData: MutableLiveData<List<Question>?> =
         MutableLiveData()
 
     val listAllQuestionLiveData: MutableLiveData<List<Question>?>
@@ -33,63 +40,93 @@ class AllQuestionViewModel : ViewModel() {
     val listNotStudyQuestionLiveData: MutableLiveData<List<Question>?>
         get() = mListNotStudyQuestionLiveData
 
+    val listWrongQuestionLiveData: MutableLiveData<List<Question>?>
+        get() = mListWrongQuestionLiveData
+
     init {
-        initViews()
+        getAllQuestion()
+        getNotStudyQuestions()
+        getWrongQuestions()
     }
 
-    private fun initViews() {
-        listQuestion = mutableListOf()
-        listAllQuestion = listOf()
-        listNotStudyQuestion = mutableListOf()
+    fun updateAnswer(id: String, currentAnswer: String) {
         viewModelScope.launch {
+            DatabaseSingleton.getDatabase(getApplication()).questionDao()
+                .updateCurrentAnswer(id, currentAnswer)
+        }
+        answersMap[id] = currentAnswer
+    }
+
+    fun loadDataFromAPI() {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
-                delay(1500)
+                delay(200)
                 val response = Api.apiService.getListQuestion()
                 if (response.isSuccessful) {
                     val responseListAllQuestion = response.body()
                     if (responseListAllQuestion != null) {
-                        listAllQuestion = responseListAllQuestion.question
-                        listAllQuestionLiveData.value = listAllQuestion
-                    } else {
-                        mListAllQuestionMutableLiveData.value = null
+                        listQuestion = responseListAllQuestion.question as MutableList<Question>
+                        listQuestion.forEach {
+                            DatabaseSingleton.getDatabase(getApplication()).questionDao()
+                                .insertQuestions(it)
+                        }
                     }
                 }
             } catch (e: Exception) {
-                mListAllQuestionMutableLiveData.value = null
-                Log.e("initViews", "Error : ${e.message}", e)
+                Log.e("loadDataFromAPI", "Error : ${e.message}", e)
             }
         }
     }
-//
-//    fun loadDataFromAPI() {
-//        viewModelScope.launch {
-//            try {
-//                delay(500)
-//                val response = Api.apiService.getListQuestion()
-//                if (response.isSuccessful) {
-//                    val responseListAllQuestion = response.body()
-//                    if (responseListAllQuestion != null) {
-//                        listQuestion = responseListAllQuestion.question as MutableList<Question>
-////                        if(appDatabase == null){
-////                            Log.i("loadDataFromAPI", "loadDataFromAPI: NULLLLL")
-////                        }
-//                        appDatabase!!.questionDao().insertQuestions(listQuestion)
-//                        listAllQuestionLiveData.value = listQuestion
-//                    } else {
-//                        mListAllQuestionMutableLiveData.value = null
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                mListAllQuestionMutableLiveData.value = null
-//                Log.e("initViews", "Error : ${e.message}", e)
-//            }
-//        }
-//    }
 
-    fun addNotStudyYet(question: Question) {
-        listNotStudyQuestion = ArrayList(listAllQuestion)
-        listNotStudyQuestion.remove(question)
-        mListNotStudyQuestionLiveData.value = listNotStudyQuestion
+    private fun getAllQuestion() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                listAllQuestion =
+                    DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
+                Log.i(this.toString(), "getAllQuestion: ${listAllQuestion.size}")
+
+                withContext(Dispatchers.Main) {
+                    listAllQuestion.associate { it.id to (it.currentAnswer ?: "") }.let {
+                        answersMap.putAll(it)
+                    }
+                    listAllQuestionLiveData.postValue(listAllQuestion)
+                }
+            } catch (e: Exception) {
+                Log.e("TAG", "Error in getAllQuestion: ${e.message}", e)
+            }
+        }
+    }
+
+    fun getNotStudyQuestions() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val listAllQuestion =
+                DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
+            Log.i(this.toString(), "getAllQuestion: ${listAllQuestion.size}")
+            listNotStudyQuestions = listAllQuestion.filter { it.currentAnswer == null }
+            listNotStudyQuestionLiveData.postValue(listNotStudyQuestions)
+        }
+    }
+
+    fun getWrongQuestions() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val listAllQuestion =
+                DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
+            listWrongQuestion =
+                listAllQuestion.filter { it.currentAnswer != it.answer && !it.currentAnswer.isNullOrBlank() }
+            listWrongQuestionLiveData.postValue(listWrongQuestion)
+            Log.i(this.toString(), "listWrongQuestion: ${listWrongQuestion.size}")
+        }
+    }
+
+    suspend fun getQuestionBetweenIds(startId: String, endId: String): List<Question> {
+        return withContext(Dispatchers.IO) {
+            DatabaseSingleton.getDatabase(getApplication()).questionDao()
+                .getQuestionBetweenIds(startId, endId)
+        }
+    }
+
+    fun getSpecialQuestion() {
+//CLEAR LIST
     }
 
 }

@@ -6,7 +6,7 @@ import com.example.learndriver.model.Image
 import com.example.learndriver.model.Option
 import com.example.learndriver.model.Question
 
-@Database(entities = [Image::class, Option::class, Question::class], version = 1)
+@Database(entities = [Question::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
 }

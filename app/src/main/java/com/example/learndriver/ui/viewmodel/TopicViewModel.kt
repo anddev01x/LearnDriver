@@ -19,12 +19,12 @@ class TopicViewModel : ViewModel() {
 
     private fun initViews() {
         listTopic = listOf(
-            Topic(R.drawable.ic_fire, "CÂU ĐIỂM LIỆT", "50 câu" , 25, "15/50"),
-            Topic(R.drawable.ic_rules, "KHÁI NIỆM VÀ QUY TẮC", "250 câu", 50, "110/250"),
-            Topic(R.drawable.ic_brain, "VĂN HÓA VÀ ĐẠO ĐỨC", "30 câu", 30, "9/30"),
-            Topic(R.drawable.ic_steering_wheel, "KỸ THUẬT LÁI XE", "20 câu", 12, "5/20"),
-            Topic(R.drawable.ic_notica_broad, "BIỂN BÁO ĐƯỜNG BỘ", "194 câu", 9, "10/194"),
-            Topic(R.drawable.ic_uphill, "SA HÌNH", "150 câu", 70, "100/150")
+            Topic(R.drawable.ic_fire, "CÂU ĐIỂM LIỆT", "60 câu" , 25, "15/60"),
+            Topic(R.drawable.ic_rules, "KHÁI NIỆM VÀ QUY TẮC", "192 câu", 50, "110/192"),
+            Topic(R.drawable.ic_brain, "VĂN HÓA VÀ ĐẠO ĐỨC", "21 câu", 30, "9/21"),
+            Topic(R.drawable.ic_steering_wheel, "KỸ THUẬT LÁI XE", "91 câu", 12, "5/91"),
+            Topic(R.drawable.ic_notica_broad, "BIỂN BÁO ĐƯỜNG BỘ", "182 câu", 9, "10/182"),
+            Topic(R.drawable.ic_uphill, "SA HÌNH", "114 câu", 70, "100/114")
         )
         mListTopicLiveData.value = listTopic
     }

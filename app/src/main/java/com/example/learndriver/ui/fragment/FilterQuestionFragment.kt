@@ -2,6 +2,7 @@ package com.example.learndriver.ui.fragment
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.activity.addCallback
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +32,12 @@ class FilterQuestionFragment : BaseFragment<FragmentFilterQuestionBinding>() {
         container: ViewGroup?
     ): FragmentFilterQuestionBinding {
         return FragmentFilterQuestionBinding.inflate(layoutInflater, container, false)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().finish()
+        }
     }
 
     override fun initViews() {

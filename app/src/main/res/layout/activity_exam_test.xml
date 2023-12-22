@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1E1E1"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ExamTestActivity">
+
+
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/purple_200"
+        android:gravity="center_vertical|center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@color/purple_200"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ic_clock"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@color/purple_200"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_clock"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/tv_exam_test"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:ignore="NestedWeights,RtlSymmetry,TextContrastCheck" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ic_tip"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/purple_200"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_what" />
+
+
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainView"
+        android:name="com.example.learndriver.ui.fragment.ExamTestFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.WrongQuestionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPage_wrong_question"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Wrong question Fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

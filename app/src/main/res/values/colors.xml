@@ -11,4 +11,6 @@
     <color name="purple_800">#8D63DA</color>
     <color name="brown">#435E5E5E</color>
     <color name="purple_900">#978CAA</color>
+    <color name="gray_400">#DBDBDB</color>
+    <color name="purple_100">#7844D3</color>
 </resources>

@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.NotStudyFragment">
 
-
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPage_not_study_question"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Have Not Study Yet Fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

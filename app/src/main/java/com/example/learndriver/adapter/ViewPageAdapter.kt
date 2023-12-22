@@ -2,17 +2,18 @@ package com.example.learndriver.adapter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.learndriver.iClickItemInterface.iClickItemListener
 import com.example.learndriver.model.Question
-import com.example.learndriver.ui.fragment.AllQuestionFragment
 import com.example.learndriver.ui.fragment.DetailQuestionFragment
 
 class ViewPageAdapter(
-    fragment: Fragment,
+    fragment: FragmentManager,
+    lifecycle: Lifecycle,
     private val mListAllQuestion: List<Question> = listOf(),
 ) :
-    FragmentStateAdapter(fragment) {
+    FragmentStateAdapter(fragment, lifecycle) {
 
     override fun getItemCount(): Int {
         return mListAllQuestion.size

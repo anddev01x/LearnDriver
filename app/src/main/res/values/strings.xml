@@ -1,41 +1,69 @@
 <resources>
     <string name="app_name">Learn Driver</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="produce">Đã uống rượu bia, không lái xe</string>
-    <string name="tv_gplx">Ôn thi GPLX B1-B2</string>
-    <string name="tv_content">Đã uống rượu bia, không lái xe</string>
-    <string name="tv_all_question">TẤT CẢ CÂU HỎI</string>
-    <string name="tv_save_question">CÂU BẠN ĐÁNH DẤU</string>
-    <string name="tv_num">250/600</string>
-    <string name="tv_num_save_question">0/1</string>
-    <string name="tv_study">ÔN THI THEO CHỦ ĐỀ</string>
-    <string name="tv_extensition">Tiện ích</string>
-    <string name="tv_notice_broad">Biển báo giao thông</string>
-    <string name="tv_search_notice_broad">Tra cứu biển báo giao thông</string>
-    <string name="tv_law_traffic">Luật giao thông</string>
-    <string name="tv_search_law_traffic">Tra cứu luật giao thông và xử phạt</string>
-    <string name="tv_rate_app">Đánh giá ứng dụng</string>
-    <string name="tv_report_error">Báo lỗi, góp ý</string>
-    <string name="tv_support">Hỗ trợ</string>
+    <string name="produce" translatable="false">Đã uống rượu bia, không lái xe</string>
+    <string name="tv_gplx" translatable="false">Ôn thi GPLX B1-B2</string>
+    <string name="tv_content" translatable="false">Đã uống rượu bia, không lái xe</string>
+    <string name="tv_all_question" translatable="false">TẤT CẢ CÂU HỎI</string>
+    <string name="tv_save_question" translatable="false">CÂU BẠN ĐÁNH DẤU</string>
+    <string name="tv_num" translatable="false">250/600</string>
+    <string name="tv_num_save_question" translatable="false">0/1</string>
+    <string name="tv_study" translatable="false">ÔN THI THEO CHỦ ĐỀ</string>
+    <string name="tv_extensition" translatable="false">Tiện ích</string>
+    <string name="tv_search_notice_broad" translatable="false">Tra cứu biển báo giao thông</string>
+    <string name="tv_law_traffic" translatable="false">Luật giao thông</string>
+    <string name="tv_search_law_traffic" translatable="false">Tra cứu luật giao thông và xử phạt</string>
+    <string name="tv_rate_app" translatable="false">Đánh giá ứng dụng</string>
+    <string name="tv_report_error" translatable="false">Báo lỗi, góp ý</string>
+    <string name="tv_support" translatable="false">Hỗ trợ</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tv_total_question">600 câu</string>
-    <string name="tv_total_save_question">1 câu</string>
-    <string name="tv_character">/</string>
-    <string name="tv_current_question">1</string>
-    <string name="tv_question_total">600</string>
-    <string name="tv_question">Câu</string>
-    <string name="tv_wrong_question">Câu sai</string>
-    <string name="tv_not_study">Chưa học</string>
-    <string name="tv_all">Tất cả</string>
-    <string name="tv_answer1">Phần mặt đường và lề đường</string>
-    <string name="tv_current_question_title">01</string>
-    <string name="tv_question_title">Phần đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?</string>
-    <string name="tv_answer2">Phần đường xe chạy</string>
-    <string name="tv_answer3">Phần đường xe cơ giới</string>
-    <string name="tv_answer4">Cả 3 đáp án trên</string>
-    <string name="tv_result_true_or_false">ĐÚNG</string>
-    <string name="tv_true">ĐÚNG</string>
-    <string name="tv_comment">Làn đường có bề đủ rộng cho xe chạy an toàn</string>
-    <string name="tv_answer_result">Đáp án đúng: Số 2</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="tv_total_question" translatable="false">600 câu</string>
+    <string name="tv_total_save_question" translatable="false">1 câu</string>
+    <string name="tv_character" translatable="false">/</string>
+    <string name="tv_current_question" translatable="false">1</string>
+    <string name="tv_question_total" translatable="false">600</string>
+    <string name="tv_question" translatable="false">Câu</string>
+    <string name="tv_wrong_question" translatable="false">Câu sai</string>
+    <string name="tv_not_study" translatable="false">Chưa học</string>
+    <string name="tv_all" translatable="false">Tất cả</string>
+    <string name="tv_answer1" translatable="false">Phần mặt đường và lề đường</string>
+    <string name="tv_current_question_title" translatable="false">01</string>
+    <string name="tv_question_title" translatable="false">Phần đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?</string>
+    <string name="tv_answer2" translatable="false">Phần đường xe chạy</string>
+    <string name="tv_answer3" translatable="false">Phần đường xe cơ giới</string>
+    <string name="tv_answer4" translatable="false">Cả 3 đáp án trên</string>
+    <string name="tv_result_true_or_false" translatable="false">ĐÚNG</string>
+    <string name="tv_true" translatable="false">ĐÚNG</string>
+    <string name="tv_comment" translatable="false">Làn đường có bề đủ rộng cho xe chạy an toàn</string>
+    <string name="tv_answer_result" translatable="false">Đáp án đúng: Số 2</string>
+    <string name="tv_exam_tip">Mẹo thi</string>
+    <string name="tv_idea1">1. ĐƯỜNG CẤP PHÉP</string>
+    <string name="tv_idea2">2. NỒNG ĐỘ CỒN</string>
+    <string name="tv_tip3">3. KHOẢNG CÁCH AN TOÀN TỐI THIỂU</string>
+    <string name="tv_tip5">4. TRÊN ĐƯỜNG CAO TỐC, TRONG ĐƯỜNG HẦM, ĐƯỜNG VÒNG, ĐẦU DỐC, NƠI TẦM NHÌN HẠN CHẾ</string>
+    <string name="tv_tip7">5. TẠI NƠI GIAO NHAU KHÔNG CÓ TÍN HIỆU ĐÈN</string>
+    <string name="tv_tip9">6. NIÊN HẠN SỬ DỤNG (TÍNH TỪ NĂM SẢN XUẤT)</string>
+    <string name="tv_tip11">7. BIỂN BÁO CẤM</string>
+    <string name="tv_tip12"><![CDATA[- Cấm ô tô --> Cấm xe tải --> Cấm máy kéo --> Cấm rơ mooc, sơ mi rơ mooc\n- Nhất chớm, nhì ưu, tam đường, tứ hướng]]></string>
+    <string name="tv_tip1">- Đường cấm dừng, cấm đỗ, cấm đi\n- Xe quá khổ, quá tải do cơ quan có thẩm quyền cấp phép</string>
+    <string name="tv_tip2">- Bị nghiêm cấm</string>
+    <string name="tv_tip4">- 35m nếu vận tốc lưu hành (V) = 60km/h\n- 55m nếu từ 60km/h đến 80km/h\n- 70m nếu từ 80km/h đến 100km/h</string>
+    <string name="tv_tip6">- Không được quay đầu xe, không lùi, không vượt\n- Không được vượt trên cầu hẹp có một làn xe\n- Không được phép quay đầu ở phần đường dành cho người đi bộ\n- Cấm lùi xe ở khu vực cấm dừng</string>
+    <string name="tv_tip8">- Có vòng xuyến: Nhường bên trái\n- Không có vòng xuyến: Nhường bên phải</string>
+    <string name="tv_tip10">- 25 năm: Ô tô tải\n- 20 năm: Ô tô chở người trên 9 chỗ</string>
+    <string name="tv_tip13">8. THỨ TỰ VỚI CÁC XE ƯU TIÊN: HỎA - SỰ - AN - THƯƠNG</string>
+    <string name="tv_tip14">- Hỏa: Xe cứu hỏa\n- Sự: Xe quân sự\n- An: Xe công an\n- Thương: Xe cứu thương\n- Xe đi làm nhiệm vụ khẩn cấp\n- Đoàn xe tang</string>
+    <string name="tv_tip15">9. CÁC HẠNG GPLX</string>
+    <string name="tv_tip16">- A1 ô tô dưới 175 cm3 và xe 3 bánh của người khuyết tật\n- A2 mô tô 175 cm3 trở lên\n- A3 xe mô tô 3 bánh\n- B1 xe không hành nghề lái xe\n- B1, B2 đến 9 chỗ ngồi</string>
+    <string name="tv_tip17">10. TỐC ĐỘ TỐI ĐA TRONG KHU ĐÔNG DÂN CƯ</string>
+    <string name="tv_tip18">- 60km/h: Đối với đường đôi hoặc đường 1 chiều có từ 2 làn xe cơ giới trở lên\n- 50km/h: Đối với đường 2 chiều hoặc đường 1 chiều có 1 làn xe cơ giới</string>
+    <string name="tv_tip19">11. PHƯƠNG TIỆN GIAO THÔNG ĐƯỜNG BỘ</string>
+    <string name="tv_tip20">- Bao gồm phương tiện giao thông cơ giới đường bộ và phương tiện giao thông thô sơ đường bộ</string>
+    <string name="tv_tip21">12. HIỆU LỆNH NGƯỜI ĐIỀU KHIỂN GIAO THÔNG</string>
+    <string name="tv_tip22">- Giơ tay thẳng đứng: Tất cả dừng, trừ xe đã có ở trong ngã tư được phép đi\n- Giang tay ngang: Trái phải đi, trước sau dừng</string>
+    <string name="tv_notice_broad">Biển báo giao thông</string>
+    <string name="tv_detail_web">Chi tiết: https://hocthilaixe.com/</string>
+    <string name="tv_exam_test">Thi thử</string>
+    <string name="tv_exam">BÀI THI THỬ SÁT HẠCH</string>
 </resources>

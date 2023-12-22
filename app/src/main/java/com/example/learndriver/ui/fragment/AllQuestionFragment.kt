@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.learndriver.adapter.ViewPageAdapter
@@ -14,7 +15,7 @@ import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
 
 
 class AllQuestionFragment : BaseFragment<FragmentAllQuestionBinding>() {
-    private lateinit var model: AllQuestionViewModel
+    private val viewModel: AllQuestionViewModel by activityViewModels()
 
     override fun initViewBinding(
         inflater: LayoutInflater,
@@ -24,18 +25,17 @@ class AllQuestionFragment : BaseFragment<FragmentAllQuestionBinding>() {
     }
 
     override fun initViews() {
-        model = ViewModelProvider(this)[AllQuestionViewModel::class.java]
         setUpViewPage()
         binding.progressBar.visibility = View.VISIBLE
     }
 
-
     private fun setUpViewPage() {
         val myActivityBinding = (activity as QuestionActivity).binding
-        model.listAllQuestionLiveData.observe(requireActivity()) {
+        viewModel.listAllQuestionLiveData.observe(viewLifecycleOwner) {
             binding.progressBar.visibility = View.GONE
-            val adapter = it?.let { it1 -> ViewPageAdapter(this, it1) }
+            val adapter = it?.let { it1 -> ViewPageAdapter(parentFragmentManager, lifecycle, it1) }
             binding.viewPageAllQuestion.adapter = adapter
+            binding.viewPageAllQuestion.offscreenPageLimit = 15
             binding.viewPageAllQuestion.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 @SuppressLint("SetTextI18n")
@@ -51,17 +51,6 @@ class AllQuestionFragment : BaseFragment<FragmentAllQuestionBinding>() {
                     }
                 }
 
-                override fun onPageScrollStateChanged(state: Int) {
-                    super.onPageScrollStateChanged(state)
-                }
-
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                }
             })
         }
     }

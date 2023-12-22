@@ -68,8 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginTop="27dp"
-            android:text="@string/tv_search_notice_broad"
-            android:textStyle="italic" />
+            android:text="@string/tv_search_notice_broad" />
 
         <View
             android:layout_width="match_parent"
@@ -119,8 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginTop="25dp"
-            android:text="@string/tv_search_law_traffic"
-            android:textStyle="italic" />
+            android:text="@string/tv_search_law_traffic" />
 
         <View
             android:layout_width="match_parent"

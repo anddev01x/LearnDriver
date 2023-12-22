@@ -7,13 +7,16 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.TextView
+import androidx.activity.viewModels
 import com.example.learndriver.R
 import com.example.learndriver.databinding.ActivityQuestionBinding
 import com.example.learndriver.ui.fragment.AllQuestionFragment
 import com.example.learndriver.ui.fragment.NotStudyFragment
 import com.example.learndriver.ui.fragment.WrongQuestionFragment
+import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
 
 class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
+    private val viewModel: AllQuestionViewModel by viewModels()
     private var selectTabNumber = 1
     private var isIconNew = true
     override fun initViewBinding(): ActivityQuestionBinding {
@@ -45,6 +48,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, AllQuestionFragment::class.java, null)
+                    .addToBackStack(null)
                     .commit()
             }
 
@@ -56,6 +60,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, NotStudyFragment::class.java, null)
+                    .addToBackStack(null)
                     .commit()
             }
 
@@ -67,6 +72,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, WrongQuestionFragment::class.java, null)
+                    .addToBackStack(null)
                     .commit()
             }
         }

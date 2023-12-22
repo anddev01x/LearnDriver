@@ -12,5 +12,6 @@ data class Question(
     @Embedded val option: Option,
     @Embedded val image: Image,
     val answer: String,
-    val suggest: String
+    val suggest: String?,
+    val currentAnswer: String?
 ) : Serializable
