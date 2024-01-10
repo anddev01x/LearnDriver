@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.DetailQuestionFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:layout_marginTop="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text=" Câu"
+                    android:textSize="17sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_marginTop="13dp"
+                    android:id="@+id/tv_current_question"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/tv_current_question_title"
+                    android:textSize="17sp" />
+
+
+
+                <ImageView
+                    android:id="@+id/img_check"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_true"
+                    android:visibility="gone"
+                    tools:ignore="ImageContrastCheck" />
+
+                <View
+                    android:layout_weight="5"
+
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:id="@id/ic_finish"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_finish_question" />
+            </TableRow>
+
+            <View
+                android:layout_width="65dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/black" />
+
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:lineSpacingExtra="5dp"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:text="@string/tv_question_title"
+                android:textColor="@color/black_200"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+            <ImageView
+                android:id="@+id/img_question"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/img_question"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/brown" />
+
+            <TableRow
+                android:id="@+id/layout_answer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:paddingStart="20dp"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/ic_answer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_answer1" />
+
+                <TextView
+                    android:id="@+id/tv_answer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/tv_answer1"
+                    android:textSize="17sp"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="0.5dp"
+                android:background="@color/brown" />
+
+            <TableRow
+                android:id="@+id/layout_answer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:paddingStart="20dp"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/ic_answer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_answer2" />
+
+                <TextView
+                    android:id="@+id/tv_answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/tv_answer2"
+                    android:textSize="17sp"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/brown" />
+
+            <TableRow
+                android:id="@+id/layout_answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:paddingStart="20dp"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/ic_answer3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_answer3" />
+
+                <TextView
+                    android:id="@+id/tv_answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/tv_answer3"
+                    android:textSize="17sp"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/brown" />
+
+            <TableRow
+                android:id="@+id/layout_answer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:paddingStart="20dp"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/ic_answer4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_answer4" />
+
+                <TextView
+                    android:id="@+id/tv_answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/tv_answer4"
+                    android:textSize="17sp"
+                    android:textStyle="normal" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/brown" />
+
+            <TableRow
+                android:id="@+id/layout_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/custom_result_question"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ic_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_big_true"
+                    tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center|start"
+                        android:text="@string/tv_result_true_or_false"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_trueAnswer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="@string/tv_answer_result" />
+
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/layout_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_comment"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="GIẢI THÍCH ĐÁP ÁN"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+            </TableRow>
+
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="30dp"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/tv_comment"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -33,7 +33,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
         binding.tabLayout3.setOnClickListener { selectTab(3) }
     }
 
-    @SuppressLint("CommitTransaction")
+    @SuppressLint("CommitTransaction", "SetTextI18n")
     private fun selectTab(tabNumber: Int) {
         val selectTextView: TextView
         val nonSelectTextView1: TextView
@@ -44,11 +44,11 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 selectTextView = binding.tabLayout1
                 nonSelectTextView1 = binding.tabLayout2
                 nonSelectTextView2 = binding.tabLayout3
+                binding.tvTotalQuestion.text = "600"
 
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, AllQuestionFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
 
@@ -56,11 +56,12 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 selectTextView = binding.tabLayout2
                 nonSelectTextView1 = binding.tabLayout1
                 nonSelectTextView2 = binding.tabLayout3
+                binding.tvTotalQuestion.text =
+                    viewModel.getNotStudyQuestion().toString()
 
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, NotStudyFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
 
@@ -68,11 +69,12 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 selectTextView = binding.tabLayout3
                 nonSelectTextView1 = binding.tabLayout1
                 nonSelectTextView2 = binding.tabLayout2
+                binding.tvTotalQuestion.text =
+                    viewModel.getWrongQuestion().toString()
 
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, WrongQuestionFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
         }
@@ -121,9 +123,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
 
     override fun clickViews(view: View) {
         super.clickViews(view)
-        if (R.id.ic_back == view.id) {
-            onBackPressed()
-        }
+        if (R.id.ic_back == view.id) return super.onBackPressed()
         if (R.id.ic_star == view.id) {
             if (isIconNew) {
                 binding.icStar.setImageResource(R.drawable.ic_star_change_color)
@@ -166,4 +166,5 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
             }
         }
     }
+
 }

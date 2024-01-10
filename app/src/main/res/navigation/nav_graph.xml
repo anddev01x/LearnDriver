@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.learndriver.ui.fragment.HomeFragment"
         android:label="Trang chủ"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_examTestActivity"
+            app:destination="@id/examTestActivity" />
+    </fragment>
     <fragment
         android:id="@+id/extensionFragment"
         android:name="com.example.learndriver.ui.fragment.ExtensionFragment"
@@ -20,4 +24,33 @@
         android:name="com.example.learndriver.ui.activity.QuestionActivity"
         android:label="activity_topic"
         tools:layout="@layout/activity_question" />
+    <activity
+        android:id="@+id/examTestActivity"
+        android:name="com.example.learndriver.ui.activity.ExamTestActivity"
+        android:label="activity_exam_test"
+        tools:layout="@layout/activity_exam_test" />
+    <fragment
+        android:id="@+id/examTestFragment"
+        android:name="com.example.learndriver.ui.fragment.ExamTestFragment"
+        android:label="ExamTestFragment" >
+        <action
+            android:id="@+id/action_examTestFragment_to_examTestTwoFragment"
+            app:destination="@id/examTestTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examTestTwoFragment"
+        android:name="com.example.learndriver.ui.fragment.ExamTestTwoFragment"
+        android:label="ExamTestTwoFragment" >
+        <action
+            android:id="@+id/action_examTestTwoFragment_to_examResultFragment"
+            app:destination="@id/examResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examResultFragment"
+        android:name="com.example.learndriver.ui.fragment.ExamResultFragment"
+        android:label="ExamResultFragment" >
+        <action
+            android:id="@+id/action_examResultFragment_to_examTestActivity"
+            app:destination="@id/examTestActivity" />
+    </fragment>
 </navigation>

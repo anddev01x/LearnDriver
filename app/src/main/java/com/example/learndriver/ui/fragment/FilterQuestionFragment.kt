@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learndriver.R
 import com.example.learndriver.adapter.QuestionAdapter
 import com.example.learndriver.databinding.FragmentFilterQuestionBinding
+import com.example.learndriver.iClickItemInterface.iClickItemFilterQuestionListener
 import com.example.learndriver.model.Question
+import com.example.learndriver.ui.activity.DetailExamActivity
 import com.example.learndriver.ui.activity.MainActivity
 import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
 import java.util.Locale
@@ -33,6 +35,7 @@ class FilterQuestionFragment : BaseFragment<FragmentFilterQuestionBinding>() {
     ): FragmentFilterQuestionBinding {
         return FragmentFilterQuestionBinding.inflate(layoutInflater, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -65,7 +68,15 @@ class FilterQuestionFragment : BaseFragment<FragmentFilterQuestionBinding>() {
             if (it != null) {
                 listQuestion = it
             }
-            questionAdapter = it?.let { it1 -> QuestionAdapter(it1) }!!
+            questionAdapter = it?.let { it1 ->
+                QuestionAdapter(it1, object : iClickItemFilterQuestionListener {
+                    override fun onResultQuestionClicked(question: Question) {
+                        val intent = Intent(requireContext(), DetailExamActivity::class.java)
+                        intent.putExtra("question", question)
+                        startActivity(intent)
+                    }
+                })
+            }!!
             binding.recyclerView.adapter = questionAdapter
         }
     }

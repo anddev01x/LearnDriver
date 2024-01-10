@@ -2,4 +2,10 @@
 <resources>
     <dimen name="_147dp">147dp</dimen>
     <dimen name="_137dp">137dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_90dp">90dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_85dp">85dp</dimen>
+    <dimen name="_75dp">75dp</dimen>
 </resources>

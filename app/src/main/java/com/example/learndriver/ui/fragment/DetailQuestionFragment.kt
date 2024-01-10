@@ -1,19 +1,17 @@
 package com.example.learndriver.ui.fragment
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TableRow
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.learndriver.R
 import com.example.learndriver.databinding.FragmentDetailQuestionBinding
 import com.example.learndriver.model.Question
+import com.example.learndriver.ui.activity.ExamTestActivity
 import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
 
 class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
@@ -37,6 +35,12 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
         R.drawable.ic_answer3_wrong,
         R.drawable.ic_answer4_wrong
     )
+    private val defaultImageResource = listOf(
+        R.drawable.ic_answer1,
+        R.drawable.ic_answer2,
+        R.drawable.ic_answer3,
+        R.drawable.ic_answer4
+    )
 
 
     override fun initViewBinding(
@@ -57,10 +61,13 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
         layoutAnswer.add(binding.layoutAnswer3)
         layoutAnswer.add(binding.layoutAnswer4)
         displayQuestionFromBundle()
+        val isExamTestActivity = activity is ExamTestActivity
 
-        if (viewModel.answersMap[question.id] != null && viewModel.answersMap[question.id]?.isNotEmpty() == true) {
-            val index = (viewModel.answersMap[question.id]?.first() ?: 'a') - 'a'
-            onChooseAnswer(index)
+        if (!isExamTestActivity) {
+            if (viewModel.answersMap[question.id] != null && viewModel.answersMap[question.id]?.isNotBlank() == true) {
+                val index = (viewModel.answersMap[question.id]?.first() ?: 'a') - 'a'
+                onChooseAnswer(index)
+            }
         }
 
         binding.layoutAnswer1.setOnClickListener(this)
@@ -85,6 +92,8 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
             binding.tvCurrentQuestion.text = getLastTwoOrThreeDigits(question.id)
             binding.tvAnswer1.text = question.option.a
             binding.tvAnswer2.text = question.option.b
+            binding.tvAnswer3.text = question.option.c
+            binding.tvAnswer4.text = question.option.d
             if (question.image.image1 != null) {
                 binding.imgQuestion.visibility = View.VISIBLE
                 Glide.with(this)
@@ -92,13 +101,11 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
                     .error(R.drawable.img_error)
                     .into(binding.imgQuestion)
             }
-            if (question.option.c == null)
+            if (question.option.c == null) {
                 binding.layoutAnswer3.visibility = View.GONE
-            if (question.option.d == null)
+            }
+            if (question.option.d == null) {
                 binding.layoutAnswer4.visibility = View.GONE
-            else {
-                binding.tvAnswer3.text = question.option.c
-                binding.tvAnswer4.text = question.option.d
             }
         }
     }
@@ -106,55 +113,88 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
 
     @SuppressLint("SetTextI18n")
     private fun onChooseAnswer(index: Int) {
-        val bundle = arguments
-        if (bundle != null) {
-            question = bundle.getSerializable("question_obj") as Question
+        val bundle = arguments ?: return
+        question = bundle.getSerializable("question_obj") as? Question ?: return
+
+        val isExamActivity = activity is ExamTestActivity
+        //if Activity is ExamActivity
+        //resetImage then when click set ImgChooseAnswer
+        if (isExamActivity) {
+            resetAnswerImages()
+            val trueImage = trueImageResource[index]
+            answerImage[index].setImageResource(trueImage)
+            viewModel.updateAnswerExam(question.id, answerText[index])
+        } else {
             viewModel.updateAnswer(question.id, answerText[index])
             viewModel.getNotStudyQuestions()
-//            viewModel.getWrongQuestions()
-            //if choose answer is true, return
+            //answer = true
+            // return
             if (answeredCorrectly) {
                 return
             }
-            binding.layoutResult.visibility = View.VISIBLE
-            binding.layoutComment.visibility = View.VISIBLE
-            binding.tvComment.visibility = View.VISIBLE
-            binding.imgCheck.visibility = View.VISIBLE
+            setupResultViews()
             binding.tvComment.text = question.suggest
-            if (answerText[index] == question.answer
-                && viewModel.answersMap[question.id] == question.answer
-                && viewModel.answersMap[question.id]?.isNotEmpty() == true
-            ) {
-                // answer choose is true
-                val trueImage = trueImageResource[index]
-                answerImage[index].setImageResource(trueImage)
 
-                binding.tvResult.text = resources.getString(R.string.tv_true)
-                binding.tvTrueAnswer.text = "Bạn đã chọn đúng"
-                binding.imgCheck.setImageResource(R.drawable.ic_true)
-                binding.icResult.setImageResource(R.drawable.ic_big_true)
-                answeredCorrectly = true
-                //glide load img url phía trên cau hoi 500
-                // font text
+            if (isAnswerCorrect(index)) {
+                handleCorrectAnswer(index)
             } else {
-                // answer choose is false
-                val wrongImage = wrongImageResource[index]
-                answerImage[index].setImageResource(wrongImage)
-                //Loop answerText -> get index ->set image
-                for (i in answerImage.indices) {
-                    if (answerText[i] == question.answer) {
-                        val trueImage = trueImageResource[i]
-                        answerImage[i].setImageResource(trueImage)
-                        binding.tvTrueAnswer.text = "Đáp án đúng: Số ${i + 1}"
-                    }
-                }
-                binding.tvResult.text = "SAI"
-                binding.imgCheck.setImageResource(R.drawable.ic_false)
-                binding.icResult.setImageResource(R.drawable.ic_big_wrong)
-                binding.tvTrueAnswer.visibility = View.VISIBLE
+                handleIncorrectAnswer(index)
             }
         }
     }
+
+    private fun resetAnswerImages() {
+        for (i in answerImage.indices) {
+            val defaultImage = defaultImageResource[i]
+            answerImage[i].setImageResource(defaultImage)
+        }
+    }
+
+    private fun isAnswerCorrect(index: Int): Boolean {
+        return answerText[index] == question.answer &&
+                viewModel.answersMap[question.id] == question.answer &&
+                viewModel.answersMap[question.id]?.isNotEmpty() == true
+    }
+
+    private fun setupResultViews() {
+        binding.layoutResult.visibility = View.VISIBLE
+        binding.layoutComment.visibility = View.VISIBLE
+        binding.tvComment.visibility = View.VISIBLE
+        binding.imgCheck.visibility = View.VISIBLE
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun handleCorrectAnswer(index: Int) {
+        val trueImage = trueImageResource[index]
+        answerImage[index].setImageResource(trueImage)
+
+        binding.tvResult.text = resources.getString(R.string.tv_true)
+        binding.tvTrueAnswer.text = "Bạn đã chọn đúng"
+        binding.imgCheck.setImageResource(R.drawable.ic_true)
+        binding.icResult.setImageResource(R.drawable.ic_big_true)
+        answeredCorrectly = true
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun handleIncorrectAnswer(index: Int) {
+        val wrongImage = wrongImageResource[index]
+        answerImage[index].setImageResource(wrongImage)
+
+        //Loop answerText -> get index -> check database ->set image
+        for (i in answerImage.indices) {
+            if (answerText[i] == question.answer) {
+                val trueImage = trueImageResource[i]
+                answerImage[i].setImageResource(trueImage)
+                binding.tvTrueAnswer.text = "Đáp án đúng: Số ${i + 1}"
+            }
+        }
+
+        binding.tvResult.text = "SAI"
+        binding.imgCheck.setImageResource(R.drawable.ic_false)
+        binding.icResult.setImageResource(R.drawable.ic_big_wrong)
+        binding.tvTrueAnswer.visibility = View.VISIBLE
+    }
+
 
     private fun getLastTwoOrThreeDigits(id: String): String {
         if (id.length == 5) {
@@ -169,6 +209,4 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
         }
         return id
     }
-
-
 }

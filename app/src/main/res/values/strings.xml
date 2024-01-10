@@ -6,8 +6,8 @@
     <string name="tv_content" translatable="false">Đã uống rượu bia, không lái xe</string>
     <string name="tv_all_question" translatable="false">TẤT CẢ CÂU HỎI</string>
     <string name="tv_save_question" translatable="false">CÂU BẠN ĐÁNH DẤU</string>
-    <string name="tv_num" translatable="false">250/600</string>
-    <string name="tv_num_save_question" translatable="false">0/1</string>
+    <string name="tv_num" translatable="false">250</string>
+    <string name="tv_num_save_question" translatable="false">0</string>
     <string name="tv_study" translatable="false">ÔN THI THEO CHỦ ĐỀ</string>
     <string name="tv_extensition" translatable="false">Tiện ích</string>
     <string name="tv_search_notice_broad" translatable="false">Tra cứu biển báo giao thông</string>
@@ -66,4 +66,13 @@
     <string name="tv_detail_web">Chi tiết: https://hocthilaixe.com/</string>
     <string name="tv_exam_test">Thi thử</string>
     <string name="tv_exam">BÀI THI THỬ SÁT HẠCH</string>
+    <string name="tv_topic_name">Question Topic</string>
+    <string name="tv_contentdescription">contentDescription</string>
+    <string name="tv_pass1">ĐỀ 1</string>
+    <string name="tv_pass2">ĐỀ 2</string>
+    <string name="tv_pass3">ĐỀ 3</string>
+    <string name="tv_pass4">ĐỀ 4</string>
+    <string name="tv_pass5">ĐỀ 5</string>
+    <string name="tv_total_question_exam">35</string>
+    <string name="tv_result_exam">Kết quả</string>
 </resources>

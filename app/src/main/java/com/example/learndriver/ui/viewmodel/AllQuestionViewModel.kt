@@ -2,14 +2,12 @@ package com.example.learndriver.ui.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.learndriver.api.Api
-import com.example.learndriver.data_local.database.AppDatabase
 import com.example.learndriver.data_local.database.DatabaseSingleton
 import com.example.learndriver.model.Question
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +20,8 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
     private var listNotStudyQuestions: List<Question> = listOf()
     private var listAllQuestion: List<Question> = listOf()
     private var listWrongQuestion: List<Question> = listOf()
+    private var listRandomQuestion: List<Question> = listOf()
+    private var listFetchRandom: List<Question> = listOf()
     val answersMap: HashMap<String, String> = hashMapOf()
 
     @SuppressLint("StaticFieldLeak")
@@ -34,18 +34,27 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
     private val mListWrongQuestionLiveData: MutableLiveData<List<Question>?> =
         MutableLiveData()
 
+    private val mListRandomQuestionLiveData: MutableLiveData<List<Question>?> =
+        MutableLiveData()
+
+    private val _countdownTime = MutableLiveData<Long>()
+    val countdownTime: LiveData<Long> get() = _countdownTime
+
     val listAllQuestionLiveData: MutableLiveData<List<Question>?>
         get() = mListAllQuestionMutableLiveData
-
     val listNotStudyQuestionLiveData: MutableLiveData<List<Question>?>
         get() = mListNotStudyQuestionLiveData
 
     val listWrongQuestionLiveData: MutableLiveData<List<Question>?>
         get() = mListWrongQuestionLiveData
 
+    val listRandomQuestionLiveData: MutableLiveData<List<Question>?>
+        get() = mListRandomQuestionLiveData
+
+
     init {
         getAllQuestion()
-        getNotStudyQuestions()
+//        getNotStudyQuestions()
         getWrongQuestions()
     }
 
@@ -99,6 +108,7 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getNotStudyQuestions() {
         viewModelScope.launch(Dispatchers.IO) {
+            delay(500)
             val listAllQuestion =
                 DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
             Log.i(this.toString(), "getAllQuestion: ${listAllQuestion.size}")
@@ -107,7 +117,7 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun getWrongQuestions() {
+    private fun getWrongQuestions() {
         viewModelScope.launch(Dispatchers.IO) {
             val listAllQuestion =
                 DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
@@ -118,6 +128,14 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
+    fun getNotStudyQuestion(): Int {
+        return listNotStudyQuestions.size
+    }
+
+    fun getWrongQuestion(): Int {
+        return listWrongQuestion.size
+    }
+
     suspend fun getQuestionBetweenIds(startId: String, endId: String): List<Question> {
         return withContext(Dispatchers.IO) {
             DatabaseSingleton.getDatabase(getApplication()).questionDao()
@@ -125,8 +143,66 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun getSpecialQuestion() {
-//CLEAR LIST
+    @SuppressLint("SuspiciousIndentation")
+    fun getRandomQuestion() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val dao = DatabaseSingleton.getDatabase(getApplication()).questionDao()
+                listRandomQuestion = dao.getRandomQuestions()
+                listFetchRandom = listRandomQuestion
+//                val questionIds = listFetchRandom.map { it.id }
+                //get ra va set null ok roi
+                listFetchRandom.forEach { it.currentAnswer = null }
+                listRandomQuestionLiveData.postValue(listFetchRandom)
+                Log.i("getRandomQuestion", "getRandomQuestion: $listFetchRandom")
+
+            } catch (e: Exception) {
+                Log.e("getRandomQuestion", "Error getting random questions", e)
+            }
+        }
     }
 
+    suspend fun getSpecificQuestions(): List<Question> {
+        return withContext(Dispatchers.IO) {
+            try {
+                return@withContext DatabaseSingleton.getDatabase(getApplication())
+                    .questionDao().getSpecificQuestions()
+            } catch (e: Exception) {
+                Log.e("getSpecificQuestion", "Error getting specific questions", e)
+                return@withContext emptyList()
+            }
+        }
+    }
+
+    fun updateAnswerExam(id: String, currentAnswer: String) {
+        val targetQuestion = listFetchRandom.find { it.id == id }
+        targetQuestion?.currentAnswer = currentAnswer
+        answersMap[id] = currentAnswer
+        Log.i("updateAnswerExam", "updateAnswerExam: $targetQuestion")
+    }
+
+    fun setCountdownTime(timeInMillis: Long) {
+        _countdownTime.value = timeInMillis
+    }
+
+    fun getListResultExam(): List<Question> {
+        return listRandomQuestion
+    }
+
+    fun getListTrueQuestionExam(): List<Question> {
+        return listRandomQuestion.filter { it.answer == it.currentAnswer }
+    }
+
+    fun getListFalseQuestionExam(): List<Question> {
+        return listRandomQuestion.filter {
+            it.answer != it.currentAnswer
+                    && it.currentAnswer != null
+        }
+    }
+
+    fun getListWarningQuestionExam(): List<Question> {
+        return listRandomQuestion.filter {
+            it.currentAnswer == null
+        }
+    }
 }

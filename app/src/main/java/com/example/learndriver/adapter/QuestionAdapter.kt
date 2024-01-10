@@ -1,14 +1,17 @@
 package com.example.learndriver.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learndriver.databinding.ItemQuestionBinding
+import com.example.learndriver.iClickItemInterface.iClickItemFilterQuestionListener
 import com.example.learndriver.model.Question
 
-class QuestionAdapter(private var listQuestion: List<Question>) :
+class QuestionAdapter(
+    private var listQuestion: List<Question>,
+    private val listener: iClickItemFilterQuestionListener
+) :
     RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>() {
 
 
@@ -29,10 +32,14 @@ class QuestionAdapter(private var listQuestion: List<Question>) :
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val question = listQuestion[position]
         holder.binding.tvQuestion.text = question.question
+        holder.binding.tvQuestion.setOnClickListener {
+            listener.onResultQuestionClicked(
+                question
+            )
+        }
     }
 
     inner class QuestionViewHolder(val binding: ItemQuestionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 }
