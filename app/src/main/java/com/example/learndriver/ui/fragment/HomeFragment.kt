@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.learndriver.R
 import com.example.learndriver.adapter.TopicAdapter
-import com.example.learndriver.data_local.share_preferences.DataLocalManager
 import com.example.learndriver.databinding.FragmentHomeBinding
 import com.example.learndriver.iClickItemInterface.iClickItemListener
 import com.example.learndriver.model.Topic

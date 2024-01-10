@@ -1,7 +1,6 @@
 package com.example.learndriver.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +32,5 @@ class QuestionAdapter(private var listQuestion: List<Question>) :
 
     inner class QuestionViewHolder(val binding: ItemQuestionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 }

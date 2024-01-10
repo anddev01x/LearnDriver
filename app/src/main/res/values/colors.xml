@@ -13,4 +13,12 @@
     <color name="purple_900">#978CAA</color>
     <color name="gray_400">#DBDBDB</color>
     <color name="purple_100">#7844D3</color>
+    <color name="brown_200">#422A6E</color>
+    <color name="green">#00BE08</color>
+    <color name="red">#FF1100</color>
+    <color name="gray_600">#7A7A7A</color>
+    <color name="black_300">#747474</color>
+    <color name="gray_500">#B3C3C3C3</color>
+    <color name="gray_700">#5A5A5A</color>
+    <color name="yellow">#E2AB04</color>
 </resources>

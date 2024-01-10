@@ -48,7 +48,6 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, AllQuestionFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
 
@@ -60,7 +59,6 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, NotStudyFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
 
@@ -72,7 +70,6 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
                 supportFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainView, WrongQuestionFragment::class.java, null)
-                    .addToBackStack(null)
                     .commit()
             }
         }
@@ -121,9 +118,7 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
 
     override fun clickViews(view: View) {
         super.clickViews(view)
-        if (R.id.ic_back == view.id) {
-            onBackPressed()
-        }
+        if (R.id.ic_back == view.id) return super.onBackPressed()
         if (R.id.ic_star == view.id) {
             if (isIconNew) {
                 binding.icStar.setImageResource(R.drawable.ic_star_change_color)
@@ -166,4 +161,5 @@ class QuestionActivity : BaseAct<ActivityQuestionBinding>() {
             }
         }
     }
+
 }

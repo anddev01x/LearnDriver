@@ -13,5 +13,7 @@ data class Question(
     @Embedded val image: Image,
     val answer: String,
     val suggest: String?,
-    val currentAnswer: String?
+    var currentAnswer: String?,
+    var positionIndexRandom: Int?,
+    val srcImg: Int?
 ) : Serializable

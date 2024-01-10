@@ -1,7 +1,6 @@
 package com.example.learndriver.ui.activity
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.example.learndriver.R
@@ -36,7 +35,6 @@ class PracticeActivity : BaseAct<ActivityPracticeBinding>() {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainView, fragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 }

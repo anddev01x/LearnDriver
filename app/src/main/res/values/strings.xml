@@ -66,4 +66,13 @@
     <string name="tv_detail_web">Chi tiết: https://hocthilaixe.com/</string>
     <string name="tv_exam_test">Thi thử</string>
     <string name="tv_exam">BÀI THI THỬ SÁT HẠCH</string>
+    <string name="tv_topic_name">Question Topic</string>
+    <string name="tv_contentdescription">contentDescription</string>
+    <string name="tv_pass1">ĐỀ 1</string>
+    <string name="tv_pass2">ĐỀ 2</string>
+    <string name="tv_pass3">ĐỀ 3</string>
+    <string name="tv_pass4">ĐỀ 4</string>
+    <string name="tv_pass5">ĐỀ 5</string>
+    <string name="tv_total_question_exam">35</string>
+    <string name="tv_result_exam">Kết quả</string>
 </resources>

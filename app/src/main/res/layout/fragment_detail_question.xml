@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.fragment.DetailQuestionFragment">
 
     <ScrollView
@@ -65,7 +64,7 @@
                 android:id="@+id/tv_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:lineSpacingExtra="5dp"
                 android:paddingStart="20dp"
@@ -79,9 +78,9 @@
             <ImageView
                 android:id="@+id/img_question"
                 android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
-                android:layout_height="250dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/img_question"
                 android:visibility="gone" />
@@ -123,6 +122,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="0.5dp"
                 android:background="@color/brown" />
 
             <TableRow
@@ -188,7 +188,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.8dp"
                 android:background="@color/brown" />
 
             <TableRow
@@ -221,7 +221,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.8dp"
                 android:background="@color/brown" />
 
             <TableRow
