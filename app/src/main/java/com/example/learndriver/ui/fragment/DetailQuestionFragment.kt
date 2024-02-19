@@ -92,8 +92,6 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
             binding.tvCurrentQuestion.text = getLastTwoOrThreeDigits(question.id)
             binding.tvAnswer1.text = question.option.a
             binding.tvAnswer2.text = question.option.b
-            binding.tvAnswer3.text = question.option.c
-            binding.tvAnswer4.text = question.option.d
             if (question.image.image1 != null) {
                 binding.imgQuestion.visibility = View.VISIBLE
                 Glide.with(this)
@@ -101,11 +99,13 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
                     .error(R.drawable.img_error)
                     .into(binding.imgQuestion)
             }
-            if (question.option.c == null) {
+            if (question.option.c == null)
                 binding.layoutAnswer3.visibility = View.GONE
-            }
-            if (question.option.d == null) {
+            if (question.option.d == null)
                 binding.layoutAnswer4.visibility = View.GONE
+            else {
+                binding.tvAnswer3.text = question.option.c
+                binding.tvAnswer4.text = question.option.d
             }
         }
     }
@@ -163,7 +163,6 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
         binding.imgCheck.visibility = View.VISIBLE
     }
 
-    @SuppressLint("SetTextI18n")
     private fun handleCorrectAnswer(index: Int) {
         val trueImage = trueImageResource[index]
         answerImage[index].setImageResource(trueImage)
@@ -175,7 +174,6 @@ class DetailQuestionFragment : BaseFragment<FragmentDetailQuestionBinding>() {
         answeredCorrectly = true
     }
 
-    @SuppressLint("SetTextI18n")
     private fun handleIncorrectAnswer(index: Int) {
         val wrongImage = wrongImageResource[index]
         answerImage[index].setImageResource(wrongImage)
