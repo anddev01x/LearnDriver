@@ -21,9 +21,9 @@ class ListWarningQuestionFragment : BaseFragment<FragmentListWarningQuestionBind
         return FragmentListWarningQuestionBinding.inflate(layoutInflater, container, false)
     }
 
-//    override fun initViews() {
-//        setUpRecyclerView()
-//    }
+   override fun initViews() {
+       setUpRecyclerView()
+   }
 
     private fun setUpRecyclerView() {
         val listQuestion = viewModel.getListWarningQuestionExam()
