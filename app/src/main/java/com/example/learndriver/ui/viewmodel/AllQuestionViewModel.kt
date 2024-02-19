@@ -36,8 +36,6 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
 
     private val mListRandomQuestionLiveData: MutableLiveData<List<Question>?> =
         MutableLiveData()
-    private val mListSpecificQuestionsLiveData: MutableLiveData<List<Question>?> =
-        MutableLiveData()
 
     private val _countdownTime = MutableLiveData<Long>()
     val countdownTime: LiveData<Long> get() = _countdownTime
@@ -52,12 +50,11 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
 
     val listRandomQuestionLiveData: MutableLiveData<List<Question>?>
         get() = mListRandomQuestionLiveData
-    val listSpecificQuestionsLiveData: MutableLiveData<List<Question>?>
-        get() = mListSpecificQuestionsLiveData
+
 
     init {
         getAllQuestion()
-        getNotStudyQuestions()
+//        getNotStudyQuestions()
         getWrongQuestions()
     }
 
@@ -111,6 +108,7 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
 
     fun getNotStudyQuestions() {
         viewModelScope.launch(Dispatchers.IO) {
+            delay(500)
             val listAllQuestion =
                 DatabaseSingleton.getDatabase(getApplication()).questionDao().getAllQuestion()
             Log.i(this.toString(), "getAllQuestion: ${listAllQuestion.size}")
@@ -128,6 +126,14 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
             listWrongQuestionLiveData.postValue(listWrongQuestion)
             Log.i(this.toString(), "listWrongQuestion: ${listWrongQuestion.size}")
         }
+    }
+
+    fun getNotStudyQuestion(): Int {
+        return listNotStudyQuestions.size
+    }
+
+    fun getWrongQuestion(): Int {
+        return listWrongQuestion.size
     }
 
     suspend fun getQuestionBetweenIds(startId: String, endId: String): List<Question> {
@@ -159,10 +165,8 @@ class AllQuestionViewModel(application: Application) : AndroidViewModel(applicat
     suspend fun getSpecificQuestions(): List<Question> {
         return withContext(Dispatchers.IO) {
             try {
-                val listSpecificQuestions = DatabaseSingleton.getDatabase(getApplication())
+                return@withContext DatabaseSingleton.getDatabase(getApplication())
                     .questionDao().getSpecificQuestions()
-                listSpecificQuestionsLiveData.postValue(listSpecificQuestions)
-                return@withContext listSpecificQuestions
             } catch (e: Exception) {
                 Log.e("getSpecificQuestion", "Error getting specific questions", e)
                 return@withContext emptyList()

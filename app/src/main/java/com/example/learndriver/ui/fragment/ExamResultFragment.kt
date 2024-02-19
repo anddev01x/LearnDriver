@@ -198,7 +198,7 @@ class ExamResultFragment : BaseFragment<FragmentExamResultBinding>() {
 
     override fun clickViews(view: View) {
         super.clickViews(view)
-        if (R.id.ic_back == view.id) return startActivity(
+        if (R.id.ic_back == view.id || R.id.bt_restart == view.id) return startActivity(
             Intent(
                 requireContext(),
                 ExamTestActivity::class.java

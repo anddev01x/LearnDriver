@@ -1,13 +1,14 @@
 package com.example.learndriver.ui.fragment
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.learndriver.adapter.QuestionResultAdapter
 import com.example.learndriver.databinding.FragmentListTotalQuestionBinding
 import com.example.learndriver.iClickItemInterface.iClickItemQuestionListener
 import com.example.learndriver.model.Question
+import com.example.learndriver.ui.activity.DetailExamActivity
 import com.example.learndriver.ui.viewmodel.AllQuestionViewModel
 
 class ListTotalQuestionFragment : BaseFragment<FragmentListTotalQuestionBinding>() {
@@ -28,7 +29,9 @@ class ListTotalQuestionFragment : BaseFragment<FragmentListTotalQuestionBinding>
         val listQuestion = viewModel.getListResultExam()
         val adapter = QuestionResultAdapter(listQuestion, object : iClickItemQuestionListener {
             override fun onResultQuestionClicked(question: Question) {
-                Toast.makeText(requireContext(), question.question, Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), DetailExamActivity::class.java)
+                intent.putExtra("question", question)
+                startActivity(intent)
             }
         })
         binding.recyclerView.adapter = adapter
