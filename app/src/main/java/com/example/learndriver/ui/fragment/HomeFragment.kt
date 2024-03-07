@@ -64,6 +64,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun onClick(view: View) {
+        //nếu view? null -> view!!.id()
         super.onClick(view)
         val selectedId = view.id
         val intent = Intent(requireContext(), PracticeActivity::class.java)
